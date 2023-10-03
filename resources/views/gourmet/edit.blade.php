@@ -56,6 +56,7 @@
                             <div class="form-text text-info">
                                 設定中: {{ $gourmet_form->food_picture }}
                             </div>
+                            <input type='hidden' name="food_picture" value="{{$gourmet_form->food_picture}}">
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除

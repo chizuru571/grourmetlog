@@ -43,9 +43,9 @@
                         <label class="col-md-3">料理写真</label>
                         @if (array_key_exists('food_picture', $gourmet_form))
                             <div class="col-md-9">
-                                {{ $gourmet_form["food_picture"] }}
+                                <img src='{{secure_asset('storage/image/' . $gourmet_form["food_picture"] ) }}' width="180" height="180">
                             </div>
-                            <input type="hidden" name="food_picture" value="{{ $gourmet_form['food_picture'] }}" width="180" height="180">
+                            <input type="hidden" name="food_picture" value="{{ $gourmet_form['food_picture'] }}">
                         @endif
                     </div>
                     <div class="form-group row">

@@ -121,6 +121,14 @@ class GourmetController extends Controller
         if ($category == null){
             abort(404);
         }
+        if ($request->remove == 'true') {
+            unset($gourmet['food_picture']);
+        } elseif ($request->file('image')) {
+            $path = $request->file('image')->store('public/image');
+            $gourmet['food_picture'] = basename($path);
+        } else {
+            $gourmet['food_picture'] = $gourmet['food_picture'];
+        }
         return view('gourmet.editconfirm', ['gourmet_form' => $gourmet],compact('gourmet','category'));
 
     }
@@ -134,22 +142,20 @@ class GourmetController extends Controller
         // 送信されてきたフォームデータを格納する
         $gourmet_form = $request->all();
 
-        if ($request->remove == 'true') {
-            $gourmet_form['food_picture'] = null;
-        } elseif ($request->file('image')) {
-            $path = $request->file('image')->store('public/image');
-            $gourmet_form['food_picture'] = basename($path);
-        } else {
-            $gourmet_form['food_picture'] = $gourmet->food_picture;
+        if (!isset($gourmet_form['food_picture'])){
+            $gourmet->food_picture=null;
+        }else {
+            $gourmet->food_picture = $gourmet_form['food_picture'];
         }
-
-        unset($gourmet_form['image']);
-        unset($gourmet_form['remove']);
+        // dd($gourmet_form);
+        unset($gourmet_form['food_picture']);
         unset($gourmet_form['_token']);
+        
 
         // 該当するデータを上書きして保存する
-        $gourmet->fill($gourmet_form)->save();
-
+        $gourmet->fill($gourmet_form);
+        // dd($gourmet);
+        $gourmet->save();
         return redirect('gourmet');
     }
 
