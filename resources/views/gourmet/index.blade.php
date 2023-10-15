@@ -18,13 +18,6 @@
                                 @csrf
                                 <input type="submit" class="btn btn-primary" value="検索">
                             </div>
-                                <div class="col-md-2">
-                                </div>
-                            <form action="{{ route('gourmet.csv-download') }}" method="get">
-                                <div class="col-md-2">
-                                    <input type="submit" class="btn btn-primary" value="CSVダウンロード">
-                                </div>
-                            </form>
                     </div>
                 </form>
             </div>
@@ -81,6 +74,17 @@
                 <div class="col-12 d-flex justify-content-center">
                 {{ $posts->links() }}
                  </div>
+             </div>
+            <div class="col-md-12">
+                <form action="{{ route('gourmet.csv-download') }}" method="get">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-primary" value="CSVダウンロード">
+                        </div>
+                    </div>
+                </form>
              </div>
         </div>
     </div>

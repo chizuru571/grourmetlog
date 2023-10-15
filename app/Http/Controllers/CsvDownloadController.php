@@ -26,7 +26,7 @@ class CsvDownloadController extends Controller
             fclose($handle);
         }, 200, [
             'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="category.csv"',
+            'Content-Disposition' => 'attachment; filename="gourmet.csv"',
         ]);
 
         return $response;
