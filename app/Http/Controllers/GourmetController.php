@@ -76,15 +76,13 @@ class GourmetController extends Controller
     
     public function index(Request $request)
     {
+        $query = Gourmet::query();
         $cond_title = $request->cond_title;
         if ($cond_title != '') {
             // 検索されたら検索結果を取得する
-            $posts = Gourmet::where('shop_name', $cond_title)->get();
-        } else {
-            // それ以外はすべてのお店情報を取得する
-            $posts = Gourmet::all();
+            // $posts = Gourmet::where('shop_name', $cond_title)->get();
+            $query->where('shop_name', $cond_title);
         }
-        $query = Gourmet::query();
         $posts = $query->orderBy('updated_at')->paginate(20);
         
         $gourmet = null;
@@ -191,7 +189,7 @@ class GourmetController extends Controller
     public function category_index(Request $request)
     {
         $query = Category::query();
-        $posts = $query->orderBy('updated_at')->paginate(3);
+        $posts = $query->orderBy('updated_at')->paginate(10);
         
         $category = null;
         if (empty($request->page) || $request->page == 1) {

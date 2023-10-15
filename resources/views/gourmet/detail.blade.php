@@ -24,10 +24,16 @@
                             <p class="category mx-auto">{{ $gourmet->category->name }}</p>
                         </div>
                     </div>
+                    <!--<div class="form-group row">-->
+                    <!--    <label class="col-md-3"><strong>レビュー</strong></label>-->
+                    <!--    <div class="col-md-9">-->
+                    <!--        <p class="review mx-auto">{{ $gourmet->review }}</p>-->
+                    <!--    </div>-->
+                    <!--</div>-->
                     <div class="form-group row">
                         <label class="col-md-3"><strong>レビュー</strong></label>
                         <div class="col-md-9">
-                            <p class="review mx-auto">{{ $gourmet->review }}</p>
+                            <span class="star-rating" data-rate="{{ $gourmet->review }}"></span>
                         </div>
                     </div>
                     <div class="form-group row">

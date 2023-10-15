@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   background-repeat: no-repeat;
   background-position: center;
@@ -57,4 +58,44 @@ body {
 .vertical {
   width: 1280px;
   margin: auto;
+}
+
+.star-rating {
+  position: relative;
+  font-size: 18px;
+}
+.star-rating::before, .star-rating::after {
+  content: "★★★★★";
+  color: #e1e1e1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.star-rating::after {
+  color: #ffb448;
+  overflow: hidden;
+}
+
+.star-rating[data-rate="0"]::after {
+  width: 0px;
+}
+
+.star-rating[data-rate="1"]::after {
+  width: 18px;
+}
+
+.star-rating[data-rate="2"]::after {
+  width: 36px;
+}
+
+.star-rating[data-rate="3"]::after {
+  width: 54px;
+}
+
+.star-rating[data-rate="4"]::after {
+  width: 72px;
+}
+
+.star-rating[data-rate="5"]::after {
+  width: 90px;
 }
