@@ -7,17 +7,24 @@
             <h2>お店一覧</h2>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <form action="{{ route('gourmet.index') }}" method="get">
                     <div class="form-group row">
-                        <label class="col-md-2">タイトル</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
-                        </div>
-                        <div class="col-md-2">
-                            @csrf
-                            <input type="submit" class="btn btn-primary" value="検索">
-                        </div>
+                        <label class="col-md-1">店名</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
+                            </div>
+                            <div class="col-md-2">
+                                @csrf
+                                <input type="submit" class="btn btn-primary" value="検索">
+                            </div>
+                                <div class="col-md-2">
+                                </div>
+                            <form action="{{ route('gourmet.csv-download') }}" method="get">
+                                <div class="col-md-2">
+                                    <input type="submit" class="btn btn-primary" value="CSVダウンロード">
+                                </div>
+                            </form>
                     </div>
                 </form>
             </div>
@@ -30,7 +37,7 @@
                             <tr>
                                 <th width="10%">ID</th>
                                 <th width="20%">店名</th>
-                                <th width="10%">カテゴリー</th>
+                                <th width="15%">カテゴリー</th>
                                 <th width="10%">レビュー</th>
                                 <th width="20%">コメント</th>
                                 <th width="10%">詳細</th>

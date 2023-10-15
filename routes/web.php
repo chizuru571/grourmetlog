@@ -61,3 +61,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 use App\Http\Controllers\TopController as PublicGourmetController;
 Route::get('gourmet/top', [PublicGourmetController::class, 'top'])->name('gourmet.top');
+
+use App\Http\Controllers\CsvDownloadController;
+Route::get('gourmet/csv-download', [CsvDownloadController::class, 'downloadCsv'])->name('gourmet.csv-download');
