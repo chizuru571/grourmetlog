@@ -258,7 +258,15 @@ class GourmetController extends Controller
     //ダッシュボードページを表示するアクションを追加
     public function dashboard()
     {
-        return view('gourmet.dashboard');
+        $result = file_get_contents("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=2b4b8a55be5b46fd&lat=34.67&lng=135.52&range=5&order=4");
+        // dd ($json);
+        $xml = simplexml_load_string($result);
+        // dd ($xml);
+        $json = json_encode($xml);
+        // dd ($json);
+        $array_date = json_decode($json,true)['shop'];
+        // dd ($array_date);
+        return view('gourmet.dashboard', ['shops'=>$array_date]);
     }
 }
 
